@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+
+  body {
+    font-family: var(--font-geist-sans), 'Inter', system-ui, sans-serif;
+    background: #f0f4f8;
+    color: #0f172a;
+    margin: 0;
+  }
+
+
+  html.dark body {
+    background: #0f172a;
+    color: #f1f5f9;
+  }
+}
+
+.leaflet-container {
+  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  background: #e8ecf0 !important;
+}
+
+html.dark .leaflet-container {
+  background: #0d1421 !important;
+}
+
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+.leaflet-control-zoom {
+  display: none !important;
+}
+
+.leaflet-interactive {
+  cursor: pointer !important;
+}
+
+.leaflet-tile-pane {
+  filter: none !important;
+}
