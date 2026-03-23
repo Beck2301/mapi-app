@@ -2,7 +2,7 @@
 
 import {
   Settings, X, Sun, Moon, Clock, Map, Satellite,
-  ToggleLeft, ToggleRight, Circle, User, ChevronRight
+  Circle, User, ChevronRight
 } from "lucide-react";
 import { useAppSettings, type ThemeMode, type MapStyle } from "@/context/AppSettingsContext";
 
@@ -62,17 +62,17 @@ export function SettingsPanel({ open, onClose }: { open: boolean; onClose: () =>
                   <button key={mode} onClick={() => setTheme(mode)}
                     className={`w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all
                       ${active
-                        ? "bg-sky-50 border-sky-300 dark:bg-sky-900/20 dark:border-sky-600/50"
-                        : "bg-white border-slate-200 hover:bg-slate-50 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
+                        ? "bg-slate-50 border-slate-900 dark:bg-slate-800 dark:border-slate-300"
+                        : "bg-white border-slate-200 hover:border-slate-300 dark:bg-white/5 dark:border-white/10 dark:hover:border-white/20"
                       }`}>
-                    <Icon size={16} className={active ? "text-sky-600 dark:text-sky-400" : "text-slate-400"} />
+                    <Icon size={16} className={active ? "text-slate-900 dark:text-slate-100" : "text-slate-400"} />
                     <div className="flex-1 min-w-0">
-                      <p className={`text-sm font-semibold ${active ? "text-sky-700 dark:text-sky-300" : "text-slate-700 dark:text-slate-200"}`}>{label}</p>
-                      <p className="text-xs text-slate-400 dark:text-slate-500">{desc}</p>
+                      <p className={`text-sm font-semibold ${active ? "text-slate-900 dark:text-slate-100" : "text-slate-700 dark:text-slate-300"}`}>{label}</p>
+                      <p className="text-xs text-slate-500">{desc}</p>
                     </div>
                     {active && (
-                      <div className="w-4 h-4 rounded-full bg-sky-500 flex items-center justify-center shrink-0">
-                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="m20 6-11 11-5-5"/></svg>
+                      <div className="w-4 h-4 rounded-full bg-slate-900 dark:bg-slate-300 flex items-center justify-center shrink-0">
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white dark:text-slate-900" strokeWidth="3"><path d="m20 6-11 11-5-5"/></svg>
                       </div>
                     )}
                   </button>
@@ -96,17 +96,17 @@ export function SettingsPanel({ open, onClose }: { open: boolean; onClose: () =>
                   <button key={style} onClick={() => setMapStyle(style)}
                     className={`w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all
                       ${active
-                        ? "bg-orange-50 border-orange-300 dark:bg-orange-900/20 dark:border-orange-500/40"
-                        : "bg-white border-slate-200 hover:bg-slate-50 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
+                        ? "bg-slate-50 border-slate-900 dark:bg-slate-800 dark:border-slate-300"
+                        : "bg-white border-slate-200 hover:border-slate-300 dark:bg-white/5 dark:border-white/10 dark:hover:border-white/20"
                       }`}>
-                    <Icon size={16} className={active ? "text-orange-600 dark:text-orange-400" : "text-slate-400"} />
+                    <Icon size={16} className={active ? "text-slate-900 dark:text-slate-100" : "text-slate-400"} />
                     <div className="flex-1 min-w-0">
-                      <p className={`text-sm font-semibold ${active ? "text-orange-700 dark:text-orange-300" : "text-slate-700 dark:text-slate-200"}`}>{label}</p>
-                      <p className="text-xs text-slate-400 dark:text-slate-500">{desc}</p>
+                      <p className={`text-sm font-semibold ${active ? "text-slate-900 dark:text-slate-100" : "text-slate-700 dark:text-slate-300"}`}>{label}</p>
+                      <p className="text-xs text-slate-500">{desc}</p>
                     </div>
                     {active && (
-                      <div className="w-4 h-4 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
-                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="m20 6-11 11-5-5"/></svg>
+                      <div className="w-4 h-4 rounded-full bg-slate-900 dark:bg-slate-300 flex items-center justify-center shrink-0">
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white dark:text-slate-900" strokeWidth="3"><path d="m20 6-11 11-5-5"/></svg>
                       </div>
                     )}
                   </button>
@@ -121,18 +121,16 @@ export function SettingsPanel({ open, onClose }: { open: boolean; onClose: () =>
             </h3>
             <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-3">
               <div className="flex items-center gap-3">
-                {showAllRoutes
-                  ? <ToggleRight size={22} className="text-sky-500 shrink-0" />
-                  : <ToggleLeft  size={22} className="text-slate-400 shrink-0" />}
+                <Map size={22} className={showAllRoutes ? "text-slate-900 dark:text-slate-100" : "text-slate-400"} />
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">Mostrar todas las rutas</p>
-                  <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                  <p className="text-xs text-slate-500 mt-0.5">
                     {showAllRoutes ? "Visible todo el tiempo" : "Solo con búsqueda activa"}
                   </p>
                 </div>
                 <button onClick={() => setShowAllRoutes(!showAllRoutes)}
                   className={`relative w-11 h-6 rounded-full transition-colors duration-200 shrink-0
-                    ${showAllRoutes ? "bg-sky-500" : "bg-slate-300 dark:bg-slate-600"}`}>
+                    ${showAllRoutes ? "bg-slate-900 dark:bg-slate-300" : "bg-slate-200 dark:bg-slate-700"}`}>
                   <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-200
                     ${showAllRoutes ? "translate-x-5" : "translate-x-0.5"}`} />
                 </button>
